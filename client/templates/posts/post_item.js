@@ -37,6 +37,9 @@ Template.postItem.helpers({
     });
     
     return attributes;
+  },
+  postUrl: function(){
+    return this.shortUrl ? this.shortUrl : this.url;
   }
 });
 
