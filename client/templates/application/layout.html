@@ -3,7 +3,9 @@
     {{> header}}
     {{> errors}}
     <div id="main" class="row-fluid">
-      {{> yield}}
+      {{#momentum plugin='iron-router' options=transition}}
+        {{> yield}}
+      {{/momentum}}
     </div>
   </div>
 </template>
