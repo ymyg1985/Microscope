@@ -23,18 +23,23 @@ Template.postsList.rendered = function () {
       var newTop = $(node).offset().top;
       
       // move node *back* to where it was before
-      $(node).css('top', oldTop - newTop).addClass('animate');
+      $(node)
+        .removeClass('animate')
+        .css('top', oldTop - newTop);
       
       // push every other element down (or up) to put them back
       $inBetween.css('top', oldTop < newTop ? height : -1 * height)
-        .addClass('animate');
+      $inBetween
+        .removeClass('animate')
+        .css('top', oldTop < newTop ? height : -1 * height)
+        
       
       // force a redraw
       $(node).height();
       
-      // reset everything to 0 // XXX: could use JQ animation here
-      $(node).css('top', 0);
-      $inBetween.css('top', 0);
+      // reset everything to 0, animated
+      $(node).addClass('animate').css('top', 0);
+      $inBetween.addClass('animate').css('top', 0);
     },
     removeElement: function (node) {
       $(node).fadeOut(function() {
